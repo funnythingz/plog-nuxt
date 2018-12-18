@@ -1,7 +1,7 @@
 <template lang="pug">
 v-container
   v-layout.mb-3
-    v-flex
+    v-flex.text-sm-right
       v-btn
         v-icon.mr-1(color="lime")
           | mdi-plus-circle-outline
