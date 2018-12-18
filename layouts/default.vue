@@ -3,7 +3,7 @@ v-app(dark)
   v-toolbar(app fixed clipped-left)
     v-toolbar-side-icon(@click.stop="drawer = !drawer")
     v-toolbar-title
-      | Application
+      | Plog
   v-navigation-drawer(v-model="drawer" clipped fixed app)
     v-list
       v-list-tile(@click="")
@@ -22,7 +22,7 @@ v-app(dark)
             | Settings
   v-content
     nuxt
-  v-footer(app fixed)
+  v-footer.pa-3(app fixed)
     span
       | &copy; funnythingz
 </template>
