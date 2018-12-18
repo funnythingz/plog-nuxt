@@ -2,10 +2,11 @@
 v-container
   v-layout
     v-flex
-      h1
-        | heading
-      p
-        | Yeah!
+      v-btn
+        v-icon(color="lime")
+          | mdi-plus-circle-outline
+        span
+          | Create
 </template>
 
 <script>
