@@ -10,7 +10,7 @@ v-container
   v-layout
     v-flex
       LogoVue
-      v-card.mb-2(v-for="content of contents")
+      v-card.mb-2(v-for="content of contents" :key="content.id")
         v-card-text
           | {{content.comment}}
         v-card-actions
@@ -29,7 +29,7 @@ v-container
 </template>
 
 <script>
-import LogoVue from '../components/Logo'
+import LogoVue from '~/components/Logo'
 
 export default {
   components: {
@@ -40,6 +40,7 @@ export default {
     return {
       contents: [
         {
+          id: 1,
           comment: 'ひゃっはー！たのしいよね！',
           actions: {
             good: 12,
@@ -47,6 +48,7 @@ export default {
           }
         },
         {
+          id: 2,
           comment: 'せやな！',
           actions: {
             good: 2,
@@ -60,5 +62,4 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
 </style>
