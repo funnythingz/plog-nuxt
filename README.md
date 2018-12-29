@@ -1,4 +1,4 @@
-# plog-nuxt
+# [wip] plog-nuxt
 
 > plog-nuxt project
 
