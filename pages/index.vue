@@ -9,6 +9,7 @@ v-container
           | Create
   v-layout
     v-flex
+      LogoVue
       v-card.mb-2(v-for="content of contents")
         v-card-text
           | {{content.comment}}
@@ -28,7 +29,13 @@ v-container
 </template>
 
 <script>
+import LogoVue from '../components/Logo'
+
 export default {
+  components: {
+    LogoVue
+  },
+
   data(){
     return {
       contents: [
@@ -52,5 +59,6 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
+
 </style>
