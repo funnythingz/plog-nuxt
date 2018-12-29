@@ -20,7 +20,8 @@
     "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
-    "vuetify": "^1.2.4"
+    "vuetify": "^1.2.4",
+    "vuexfire": "^3.0.0-alpha.14"
   },
   "devDependencies": {
     "eslint-config-prettier": "^3.1.0",
