@@ -2,7 +2,11 @@
 v-container
   v-layout
     v-flex
-      v-btn(@click="auth")
+      p(v-if="isLogin()")
+        | {{currentUser.displayName}}
+        span(@click="logout")
+          | Logout
+      v-btn(v-else @click="auth")
         v-icon.mr-1(color="light-blue")
           | mdi-twitter
         span
@@ -11,17 +15,32 @@ v-container
 
 <script>
 import firebase from 'firebase'
+import {isEmpty} from 'lodash/lodash'
 
 export default {
   layout: 'before-auth',
-    components: {
-    },
-    methods: {
-      auth() {
-        const provider = new firebase.auth.TwitterAuthProvider()
-        firebase.auth().signInWithRedirect(provider)
-      }
+  components: {
+  },
+  asyncData(context){
+    return {
+      currentUser: context.app.$currentUser()
     }
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  methods: {
+    auth() {
+      const provider = new firebase.auth.TwitterAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
+    },
+    logout() {
+      this.$router.push({path: '/logout'})
+    },
+    isLogin() {
+      return !isEmpty(this.currentUser)
+    }
+  }
 }
 </script>
 
