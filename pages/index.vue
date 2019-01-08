@@ -10,26 +10,27 @@ v-container
   v-layout
     v-flex
       LogoVue
-      v-card.mb-2(v-for="content of contents" :key="content.id")
+      v-card.mb-2(v-for="comment of comments" :key="comment.id")
         v-card-text
-          | {{content.comment}}
+          | {{comment.content}}
         v-card-actions
           v-btn(color="red" flat)
             v-icon.mr-1
               | mdi-heart-broken
             | Bad!
             span.small.ml-2
-              | {{content.actions.bad}}
+              | {{comment.actions.bad}}
           v-btn(color="green" flat)
             v-icon.mr-1
               | mdi-heart-circle-outline
             | Good!
             span.small.ml-2
-              | {{content.actions.good}}
+              | {{comment.actions.good}}
 </template>
 
 <script>
 import LogoVue from '~/components/Logo'
+import firebase from 'firebase'
 
 export default {
   components: {
@@ -38,10 +39,10 @@ export default {
 
   data(){
     return {
-      contents: [
+      comments: [
         {
           id: 1,
-          comment: 'ひゃっはー！たのしいよね！',
+          content: 'ひゃっはー！たのしいよね！',
           actions: {
             good: 12,
             bad: 4
@@ -49,7 +50,7 @@ export default {
         },
         {
           id: 2,
-          comment: 'せやな！',
+          content: 'せやな！',
           actions: {
             good: 2,
             bad: 3
