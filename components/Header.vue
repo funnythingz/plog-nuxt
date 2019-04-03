@@ -1,6 +1,5 @@
 <template lang="pug">
-v-layout
-  v-toolbar(color="lighten-1" dark)
+  v-toolbar(color="lime accent-4" dense)
     v-toolbar-side-icon(@click.stop="drawer = !drawer")
     v-toolbar-title
       | Plog

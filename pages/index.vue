@@ -1,7 +1,7 @@
 <template lang="pug">
 v-container
-  v-layout.mb-3
-    v-flex.text-sm-right
+  v-layout.row.justify-center.mb-3
+    v-flex.text-sm-right.lg6
       v-btn
         v-icon.mr-1(color="lime")
           | mdi-plus-circle-outline
@@ -9,7 +9,7 @@ v-container
           | Create
   v-layout.row.justify-center
     v-flex.lg6
-      v-card.mb-2(v-for="comment of comments" :key="comment.id")
+      v-card.mb-2(v-for="comment of comments" :key="comment.id" color="deep-purple darken-1" dark)
         v-card-text
           | {{comment.content}}
         v-card-actions
