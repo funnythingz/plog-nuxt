@@ -7,8 +7,8 @@ v-container
           | mdi-plus-circle-outline
         span
           | Create
-  v-layout
-    v-flex
+  v-layout.row.justify-center
+    v-flex.lg6
       v-card.mb-2(v-for="comment of comments" :key="comment.id")
         v-card-text
           | {{comment.content}}
