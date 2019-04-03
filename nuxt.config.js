@@ -37,7 +37,7 @@ module.exports = {
   plugins: [
     '@/plugins/vuetify',
     '@/plugins/firebase',
-    '@/plugins/auth'
+    '@/plugins/firestore'
   ],
 
   /*
@@ -46,6 +46,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
+    '@nuxtjs/pwa',
     '@nuxtjs/dotenv'
   ],
   /*
@@ -65,5 +66,8 @@ module.exports = {
     extend(config, ctx) {
 
     }
+  },
+
+  workbox: {
   }
 }

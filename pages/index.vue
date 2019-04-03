@@ -9,7 +9,6 @@ v-container
           | Create
   v-layout
     v-flex
-      LogoVue
       v-card.mb-2(v-for="comment of comments" :key="comment.id")
         v-card-text
           | {{comment.content}}
@@ -19,46 +18,29 @@ v-container
               | mdi-heart-broken
             | Bad!
             span.small.ml-2
-              | {{comment.actions.bad}}
+              | {{comment.bad}}
           v-btn(color="green" flat)
             v-icon.mr-1
               | mdi-heart-circle-outline
             | Good!
             span.small.ml-2
-              | {{comment.actions.good}}
+              | {{comment.good}}
 </template>
 
 <script>
-import LogoVue from '~/components/Logo'
-import firebase from 'firebase'
+import { db } from '~/plugins/firestore.js'
+import { mapGetters } from 'vuex'
 
 export default {
-  components: {
-    LogoVue
+
+  created() {
+    this.$store.dispatch('setCommentsRef', db.collection('comments'))
   },
 
-  data(){
-    return {
-      comments: [
-        {
-          id: 1,
-          content: 'ひゃっはー！たのしいよね！',
-          actions: {
-            good: 12,
-            bad: 4
-          }
-        },
-        {
-          id: 2,
-          content: 'せやな！',
-          actions: {
-            good: 2,
-            bad: 3
-          }
-        }
-      ]
-    }
+  computed: {
+    ...mapGetters({ comments: 'getComments' })
   }
+
 }
 </script>
 
