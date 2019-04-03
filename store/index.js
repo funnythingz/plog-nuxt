@@ -15,7 +15,7 @@ const Store = () => {
     },
     actions: {
       setCommentsRef: firebaseAction(({ bindFirebaseRef }, ref) => {
-        bindFirebaseRef('comments', ref.orderBy('timestamp', 'desc'))
+        bindFirebaseRef('comments', ref)
       })
     },
     getters: {
@@ -24,7 +24,7 @@ const Store = () => {
       },
       getComments: (state) => {
         return state.comments
-      },
+      }
     }
   })
 }
