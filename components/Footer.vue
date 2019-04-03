@@ -1,4 +1,7 @@
 <template lang="pug">
+v-footer.pa-3(app fixed)
+  span
+    | &copy; funnythingz
 </template>
 
 <script>

@@ -1,24 +1,24 @@
 <template lang="pug">
 v-app(dark)
-  v-toolbar(app fixed)
-    v-toolbar-title
-      | Plog
-  v-content
-    nuxt
-  v-footer.pa-3(app fixed)
-    span
-      | &copy; funnythingz
+  Header
+  nuxt
+  Footer
 </template>
 
 <script>
-export default {
+import Header from '~/components/Header'
+import Footer from '~/components/Footer'
 
+export default {
   props: {
     source: String
+  },
+  components: {
+    Header,
+    Footer
   }
-
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 </style>
