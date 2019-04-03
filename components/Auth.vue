@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+v-layout.justify-end.mr-2
   v-avatar(v-if="isLogin()" size="36px")
     v-btn(icon)
       img(:src="currentUser.photoURL")

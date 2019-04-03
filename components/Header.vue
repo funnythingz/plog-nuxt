@@ -2,7 +2,7 @@
   v-toolbar(dense)
     v-toolbar-side-icon(@click.stop="drawer = !drawer")
     v-toolbar-title
-      | Plog
+      | plog
     v-spacer
     Auth
 </template>
