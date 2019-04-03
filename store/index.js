@@ -1,21 +1,21 @@
 import Vuex from 'vuex'
-import { firebaseMutations, firebaseAction } from 'vuexfire'
+import { vuexfireMutations, firestoreAction } from 'vuexfire'
 
-const Store = () => {
-  return new Vuex.Store({
+const Store = () => { return new Vuex.Store({
     state: {
       currentUser: {},
       comments: []
     },
     mutations: {
-      ...firebaseMutations,
+      ...vuexfireMutations,
       setCurrentUser(state, user) {
         state.currentUser = user
       },
     },
     actions: {
-      setCommentsRef: firebaseAction(({ bindFirebaseRef }, ref) => {
-        bindFirebaseRef('comments', ref)
+      setCommentsRef: firestoreAction(({ bindFirestoreRef }, ref) => {
+        console.log(ref)
+        bindFirestoreRef('comments', ref.orderBy('timestamp', 'desc'))
       })
     },
     getters: {

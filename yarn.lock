@@ -1495,6 +1495,11 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
+"@posva/vuefire-core@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@posva/vuefire-core/-/vuefire-core-1.1.0.tgz#4a3bf8a2719172325c6a6dae791feb44b485e8ff"
+  integrity sha512-Z/jwkwyRUwC7KHpy7/ptjQwv3c0uDkAL9rmtYw8KNAK7ZKUFNAj4gqdMNgNbfmXykRLDYwtYDwuBWdtH2jR02Q==
+
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@protobufjs/aspromise/-/aspromise-1.1.2.tgz#9b8b0cc663d669a7d8f6f5d0893a14d348f30fbf"
@@ -2383,9 +2388,9 @@ block-stream@*:
     inherits "~2.0.0"
 
 bluebird@^3.1.1, bluebird@^3.5.1, bluebird@^3.5.3:
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
-  integrity sha512-/qKPUQlaW1OyR51WeCPBvRnAlnZFUJkCSG5HzGnuIqhgyJtF+T94lFnn33eiazjRm2LAHVy2guNnaq48X9SJuw==
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
+  integrity sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
 
 bmp-js@^0.1.0:
   version "0.1.0"
@@ -9534,10 +9539,12 @@ vuex@^3.1.0:
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.0.tgz#634b81515cf0cfe976bd1ffe9601755e51f843b9"
   integrity sha512-mdHeHT/7u4BncpUZMlxNaIdcN/HIt1GsGG5LKByArvYG/v6DvHcOxvDCts+7SRdCoIRGllK8IMZvQtQXLppDYg==
 
-vuexfire@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/vuexfire/-/vuexfire-2.3.1.tgz#9a3bd6cab06183f48dd864c401073688898643c2"
-  integrity sha512-DLlpCew+uDIhHpVKGHbpgOUBSJT6loK2EZmKWiVvz/m0hzw8hNPFLnx/MZwtitfX5zVaq59hD8b72/YA03oSsA==
+vuexfire@^3.0.0-alpha.15:
+  version "3.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/vuexfire/-/vuexfire-3.0.0-alpha.15.tgz#3e9c2df4079253d99d0212f177c9638caedab2f1"
+  integrity sha512-x0hvDEsyVMjZJUB6aBtSjP4gObSZ6Z69UIMqZg6sdi5/7g5ENPhV1Ftj0JEzRxTen/Oo3DKP55UDRqvzLXg0EQ==
+  dependencies:
+    "@posva/vuefire-core" "^1.1.0"
 
 walkdir@^0.3.0, walkdir@^0.3.2:
   version "0.3.2"
