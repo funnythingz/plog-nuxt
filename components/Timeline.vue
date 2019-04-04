@@ -7,13 +7,13 @@ v-flex.lg6.pr-3
           | {{comment.content}}
         v-divider
         v-card-actions.justify-end
-          v-btn(flat dark @click="goodAction(comment.id)" :disabled="goodActionActive")
+          v-btn(flat :dark="isLogin()" small @click="goodAction(comment.id)" :disabled="goodActionActive")
             v-icon.mr-1
               | mdi-heart-circle-outline
             | Good!
             span.small.ml-2
               | {{comment.good}}
-          v-btn(flat dark @click="badAction(comment.id)" :disabled="badActionActive")
+          v-btn(flat :dark="isLogin()" small @click="badAction(comment.id)" :disabled="badActionActive")
             v-icon.mr-1
               | mdi-heart-broken
             | Bad!
@@ -23,7 +23,8 @@ v-flex.lg6.pr-3
 
 <script>
 import { db } from '~/plugins/firestore.js'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
+import isEmpty from 'lodash/isEmpty'
 
 export default {
 
@@ -31,8 +32,17 @@ export default {
     this.$store.dispatch('setCommentsRef', db.collection('comments'))
   },
 
+  updated() {
+    if(this.isLogin()) {
+      this.actionEnabled()
+    } else {
+      this.actionDisabled()
+    }
+  },
+
   computed: {
-    ...mapGetters({ comments: 'getComments' })
+    ...mapGetters({ comments: 'getComments' }),
+    ...mapState(['currentUser'])
   },
 
   data() {
@@ -44,26 +54,45 @@ export default {
 
   methods: {
     async goodAction(commentId) {
-      this.goodActionActive = true
-      const docRef = db.collection('comments').doc(commentId)
-      const doc = await docRef.get()
-      const comment = doc.data()
-      docRef.update({
-        good: (comment.good += 1)
-      })
-      this.goodActionActive = false
-      this.$router.push({path: '/'})
+      if(this.isLogin()) {
+        this.goodActionActive = true
+        const docRef = db.collection('comments').doc(commentId)
+        const doc = await docRef.get()
+        const comment = doc.data()
+        docRef.update({
+          good: (comment.good += 1)
+        })
+        this.goodActionActive = false
+        this.$router.push({path: '/'})
+      }
     },
+
     async badAction(commentId) {
-      this.badActionActive = true
-      const docRef = db.collection('comments').doc(commentId)
-      const doc = await docRef.get()
-      const comment = doc.data()
-      docRef.update({
-        bad: (comment.bad += 1)
-      })
+      if(this.isLogin()) {
+        this.badActionActive = true
+        const docRef = db.collection('comments').doc(commentId)
+        const doc = await docRef.get()
+        const comment = doc.data()
+        docRef.update({
+          bad: (comment.bad += 1)
+        })
+        this.badActionActive = false
+        this.$router.push({path: '/'})
+      }
+    },
+
+    isLogin() {
+      return !isEmpty(this.currentUser)
+    },
+
+    actionEnabled() {
+      this.goodActionActive = false
       this.badActionActive = false
-      this.$router.push({path: '/'})
+    },
+
+    actionDisabled() {
+      this.goodActionActive = true
+      this.badActionActive = true
     }
   }
 

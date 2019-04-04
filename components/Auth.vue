@@ -13,7 +13,7 @@ v-layout.justify-end.mr-2
 <script>
 import firebase from 'firebase'
 import isEmpty from 'lodash/isEmpty'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
 
