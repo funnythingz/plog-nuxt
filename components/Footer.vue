@@ -1,7 +1,7 @@
 <template lang="pug">
-v-footer.pa-3(app fixed)
-  span
-    | &copy; funnythingz
+  v-footer.justify-center.pa-3(app fixed)
+    span
+      | &copy; funnythingz
 </template>
 
 <script>
