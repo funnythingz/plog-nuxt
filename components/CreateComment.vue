@@ -32,7 +32,6 @@ export default {
   methods: {
     async commit() {
       this.commitActive = true
-      const storageRef = firebase.storage().ref()
       const comment = await db.collection('comments').add(this.createComment(this.comment))
       this.clearComment()
       this.$router.push({path: '/'})
