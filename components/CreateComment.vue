@@ -38,7 +38,7 @@ export default {
     },
 
     createComment(comment) {
-      const mcs = new MaterialColorsSelector();
+      let mcs = new MaterialColorsSelector()
       return {
         content: comment,
         color: mcs.random(),

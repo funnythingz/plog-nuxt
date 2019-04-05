@@ -1,7 +1,7 @@
 {
-  "name": "plog-nuxt",
+  "name": "plog",
   "version": "1.0.0",
-  "description": "plog-nuxt project",
+  "description": "plog is comments PF",
   "author": "funnythingz",
   "private": true,
   "scripts": {
@@ -20,7 +20,7 @@
     "firebase-admin": "^7.2.0",
     "firebase-functions": "^2.2.1",
     "lodash": "^4.17.11",
-    "material-colors-selector": "^1.0.0",
+    "material-colors-selector": "^1.0.3",
     "node-sass": "^4.11.0",
     "nuxt": "^2.5.0",
     "pug": "2.0.3",
