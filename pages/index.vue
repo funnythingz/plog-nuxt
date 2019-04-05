@@ -1,6 +1,6 @@
 <template lang="pug">
-v-container(grid-list-lg)
-  v-layout(row justify-center wrap)
+v-container.grid-list-xs
+  v-layout.row.justify-center.wrap
     CreateComment
     Timeline
 </template>

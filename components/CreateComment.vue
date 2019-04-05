@@ -4,8 +4,8 @@ v-flex.lg3(v-if="isLogin()")
     v-flex
       v-form(@submit.prevent="submit")
         v-textarea(v-model="comment" outline label="Comment" color="indigo lighten-1")
-        v-layout.row.justify-end
-          v-flex.text-xs-right
+        v-layout.row.justify-end.text-xs-right
+          v-flex
             v-btn(@click="commit" :disabled="commitActive" small)
               v-icon.mr-1
                 | mdi-comment-plus

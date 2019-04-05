@@ -1,9 +1,9 @@
 <template lang="pug">
 v-flex.pr-3
   v-container.grid-list-lg
-    v-layout(row wrap)
-      v-flex.lg3(v-for="comment of comments" :key="comment.id")
-        v-card.mb-2(:color="comment.color")
+    v-layout.row.wrap
+      v-flex(v-for="comment of comments" :key="comment.id")
+        v-card(:color="comment.color")
           v-card-text
             | {{comment.content}}
           v-divider
@@ -18,7 +18,7 @@ v-flex.pr-3
               v-icon.mr-1
                 | mdi-heart-broken
               | Bad!
-              span.small.ml-2
+              span.ml-2
                 | {{comment.bad}}
 </template>
 
