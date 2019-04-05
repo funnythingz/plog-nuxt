@@ -1,8 +1,8 @@
 <template lang="pug">
-v-container
-  v-layout.row.justify-center
-    Timeline
+v-container(grid-list-lg)
+  v-layout(row justify-center wrap)
     CreateComment
+    Timeline
 </template>
 
 <script>

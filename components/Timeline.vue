@@ -1,24 +1,25 @@
 <template lang="pug">
-v-flex.lg6.pr-3
-  v-layout.row
-    v-flex
-      v-card.mb-2(v-for="comment of comments" :key="comment.id" :color="comment.color")
-        v-card-text
-          | {{comment.content}}
-        v-divider
-        v-card-actions.justify-end
-          v-btn(flat :dark="isLogin()" small @click="goodAction(comment.id)" :disabled="goodActionActive")
-            v-icon.mr-1
-              | mdi-heart-circle-outline
-            | Good!
-            span.small.ml-2
-              | {{comment.good}}
-          v-btn(flat :dark="isLogin()" small @click="badAction(comment.id)" :disabled="badActionActive")
-            v-icon.mr-1
-              | mdi-heart-broken
-            | Bad!
-            span.small.ml-2
-              | {{comment.bad}}
+v-flex.pr-3
+  v-container.grid-list-lg
+    v-layout(row wrap)
+      v-flex.lg3(v-for="comment of comments" :key="comment.id")
+        v-card.mb-2(:color="comment.color")
+          v-card-text
+            | {{comment.content}}
+          v-divider
+          v-card-actions.justify-end
+            v-btn(flat :dark="isLogin()" small @click="goodAction(comment.id)" :disabled="goodActionActive")
+              v-icon.mr-1
+                | mdi-heart-circle-outline
+              | Good!
+              span.small.ml-2
+                | {{comment.good}}
+            v-btn(flat :dark="isLogin()" small @click="badAction(comment.id)" :disabled="badActionActive")
+              v-icon.mr-1
+                | mdi-heart-broken
+              | Bad!
+              span.small.ml-2
+                | {{comment.bad}}
 </template>
 
 <script>
