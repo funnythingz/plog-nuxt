@@ -47,7 +47,15 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
-    ['@nuxtjs/google-tag-manager', { id: 'UA-1882060-28' }]
+    [
+      '@nuxtjs/google-tag-manager',{
+        id: 'GTM-MVCHJ3X',
+        pageTracking: true
+      }
+    ],
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-1882060-28'
+    }]
   ],
   /*
   ** Axios module configuration
