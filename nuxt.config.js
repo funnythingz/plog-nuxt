@@ -52,10 +52,7 @@ module.exports = {
         id: 'GTM-MVCHJ3X',
         pageTracking: true
       }
-    ],
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-1882060-28'
-    }]
+    ]
   ],
   /*
   ** Axios module configuration
