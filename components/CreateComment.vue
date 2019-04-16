@@ -1,8 +1,6 @@
 <template lang="pug">
 v-dialog(v-model="createCommentFlag" max-width="500")
   v-card
-    v-card-title
-      | comment
     v-card-text
       v-form(@submit.prevent="submit")
         v-textarea(v-model="comment" outline label="Comment" color="indigo lighten-1")
@@ -15,7 +13,7 @@ v-dialog(v-model="createCommentFlag" max-width="500")
             v-btn(@click="commit" :disabled="commitActive" flat small)
               v-icon.mr-1
                 | mdi-comment-plus-outline
-              | post
+              | Post
     v-card-actions
 </template>
 
