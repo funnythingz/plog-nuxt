@@ -1,12 +1,12 @@
 <template lang="pug">
 v-layout
   v-toolbar(dense)
-    v-toolbar-side-icon(@click.stop="drawer = !drawer")
+    v-toolbar-side-icon(@click.stop="drawer = !drawer" v-if="isLogin()")
     v-toolbar-title
       | plog
     v-spacer
     Auth
-  v-navigation-drawer(v-model="drawer" absolute temporary)
+  v-navigation-drawer(v-model="drawer" absolute temporary v-if="isLogin()")
     v-list.pa-0
       v-list-tile(avatar)
         v-list-tile-avatar
@@ -15,6 +15,12 @@ v-layout
           v-list-tile-title
             | {{currentUser.displayName}}
     v-list.pt-0(dense)
+      v-divider
+      nuxt-link(to="/logout")
+        v-list-tile
+          v-list-tile-content
+            v-list-tile-title
+              | Logout
       v-divider
 </template>
 
@@ -39,6 +45,9 @@ export default {
     },
     isLogin() {
       return !isEmpty(this.currentUser)
+    },
+    isLogout() {
+      return isEmpty(this.currentUser)
     }
   }
 }
