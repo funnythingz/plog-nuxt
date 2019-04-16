@@ -6,15 +6,15 @@ v-container.grid-list-xs
 </template>
 
 <script>
-import Timeline from '~/components/Timeline'
 import CreateComment from '~/components/CreateComment'
+import Timeline from '~/components/Timeline'
 
 export default {
 
   components: {
-    Timeline,
-    CreateComment
-  },
+    CreateComment,
+    Timeline
+  }
 
 }
 </script>

@@ -1,9 +1,14 @@
 <template lang="pug">
 v-layout.justify-end.mr-2
+  v-btn(v-if="isLogin()" @click="enabledDialog()" flat)
+    v-icon.mr-1
+      | mdi-comment-plus
+    span
+      | comment
   v-avatar(v-if="isLogin()" size="36px")
     v-btn(icon)
       img(:src="currentUser.photoURL")
-  v-btn(v-else @click="auth" icon)
+  v-btn(v-if="isLogout()" @click="auth" flat)
     v-icon.mr-1(color="light-blue")
       | mdi-twitter
     span
@@ -35,6 +40,17 @@ export default {
     },
     isLogin() {
       return !isEmpty(this.currentUser)
+    },
+    isLogout() {
+      return isEmpty(this.currentUser)
+    },
+
+    enabledDialog() {
+      this.$store.commit('setCreateCommentFlag', true)
+    },
+
+    disabledDialog() {
+      this.$store.commit('setCreateCommentFlag', false)
     }
   }
 

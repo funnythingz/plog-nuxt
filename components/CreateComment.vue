@@ -1,26 +1,44 @@
 <template lang="pug">
-v-flex.lg3(v-if="isLogin()")
-  v-layout.row
-    v-flex
+v-dialog(v-model="createCommentFlag" max-width="500")
+  v-card
+    v-card-title
+      | comment
+    v-card-text
       v-form(@submit.prevent="submit")
         v-textarea(v-model="comment" outline label="Comment" color="indigo lighten-1")
         v-layout.row.justify-end.text-xs-right
           v-flex
-            v-btn(@click="commit" :disabled="commitActive" small)
+            v-btn(@click="closeDialog()" color="primary" flat small)
               v-icon.mr-1
-                | mdi-comment-plus
+                | mdi-close-circle-outline
+              | Close
+            v-btn(@click="commit" :disabled="commitActive" flat small)
+              v-icon.mr-1
+                | mdi-comment-plus-outline
               | post
+    v-card-actions
 </template>
 
 <script>
 import firebase from 'firebase'
 import { db } from '~/plugins/firestore.js'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import isNull from 'lodash/isNull'
 import sample from 'lodash/sample'
 import MaterialColorsSelector from 'material-colors-selector'
 
 export default {
+
+  computed: {
+    createCommentFlag: {
+      get() {
+        return this.$store.state.createCommentFlag
+      },
+      set(value) {
+        this.$store.commit('setCreateCommentFlag', value)
+      }
+    }
+  },
 
   data() {
     return {
@@ -31,6 +49,7 @@ export default {
 
   methods: {
     async commit() {
+      this.closeDialog()
       this.commitActive = true
       const comment = await db.collection('comments').add(this.createComment(this.comment))
       this.clearComment()
@@ -55,6 +74,10 @@ export default {
     clearComment() {
       this.commitActive = false
       this.comment = ''
+    },
+
+    closeDialog() {
+      this.$store.commit('setCreateCommentFlag', false)
     }
   }
 

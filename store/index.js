@@ -5,13 +5,17 @@ export const strict = false
 
 export const state = () => ({
   currentUser: {},
-  comments: []
+  comments: [],
+  createCommentFlag: false
 })
 
 export const mutations = {
   ...vuexfireMutations,
   setCurrentUser(state, user) {
     state.currentUser = user
+  },
+  setCreateCommentFlag(state, flag) {
+    state.createCommentFlag = flag
   }
 }
 
@@ -27,5 +31,8 @@ export const getters = {
   },
   getCurrentUser: (state) => {
     return state.currentUser
+  },
+  getCreateCommentFlag: (state) => {
+    return state.createCommentFlag
   }
 }
