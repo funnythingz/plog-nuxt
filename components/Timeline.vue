@@ -1,5 +1,5 @@
 <template lang="pug">
-v-flex.pr-3
+v-flex.pr-3.mt-4.mb-3
   v-container.grid-list-lg
     v-layout.row.wrap
       v-flex(v-for="comment of comments" :key="comment.id")

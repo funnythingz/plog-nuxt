@@ -1,6 +1,6 @@
 <template lang="pug">
 v-layout
-  v-toolbar(dense)
+  v-toolbar(dense fixed)
     v-toolbar-side-icon(@click.stop="drawer = !drawer" v-if="isLogin()")
     v-toolbar-title
       | plog

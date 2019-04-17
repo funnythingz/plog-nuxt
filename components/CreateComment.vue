@@ -6,15 +6,14 @@ v-dialog(v-model="createCommentFlag" max-width="500")
         v-textarea(v-model="comment" outline label="Comment" color="indigo lighten-1")
         v-layout.row.justify-end.text-xs-right
           v-flex
-            v-btn(@click="closeDialog()" color="primary" flat small)
+            v-btn(@click="closeDialog()" color="grey" flat small)
               v-icon.mr-1
                 | mdi-close-circle-outline
               | Close
-            v-btn(@click="commit" :disabled="commitActive" flat small)
+            v-btn(@click="commit" :disabled="commitActive" color="primary" flat small)
               v-icon.mr-1
                 | mdi-comment-plus-outline
               | Post
-    v-card-actions
 </template>
 
 <script>

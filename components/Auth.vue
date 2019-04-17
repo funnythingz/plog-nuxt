@@ -1,13 +1,10 @@
 <template lang="pug">
-v-layout.justify-end.mr-2
-  v-btn(v-if="isLogin()" @click="enabledDialog()" flat)
+v-layout.justify-end.align-center.mr-2
+  v-btn(v-if="isLogin()" @click="enabledDialog()" icon)
     v-icon.mr-1
       | mdi-comment-plus
-    span
-      | comment
   v-avatar(v-if="isLogin()" size="36px")
-    v-btn(icon)
-      img(:src="currentUser.photoURL")
+    img(:src="currentUser.photoURL")
   v-btn(v-if="isLogout()" @click="auth" flat)
     v-icon.mr-1(color="light-blue")
       | mdi-twitter
