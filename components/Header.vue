@@ -5,7 +5,7 @@ v-layout
     v-toolbar-title
       | plog
     v-spacer
-    Auth
+      HeaderMenu
   v-navigation-drawer(v-model="drawer" absolute temporary v-if="isLogin()")
     v-list.pa-0
       v-list-tile(avatar)
@@ -25,14 +25,14 @@ v-layout
 </template>
 
 <script>
-import Auth from '~/components/Auth'
+import HeaderMenu from '~/components/HeaderMenu'
 import {mapState} from 'vuex'
 import isEmpty from 'lodash/isEmpty'
 
 export default {
   computed: mapState(['currentUser']),
   components: {
-    Auth
+    HeaderMenu
   },
   data() {
     return {
