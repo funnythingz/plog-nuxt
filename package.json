@@ -10,6 +10,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate"
   },
+  "engines": {
+    "node": "11"
+  },
   "dependencies": {
     "@mdi/font": "^3.2.89",
     "@nuxtjs/axios": "^5.0.0",
