@@ -14,7 +14,16 @@ export default {
   components: {
     CreateComment,
     Timeline
-  }
+  },
+
+  head: {
+    title: 'plog - Timeline',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'PlogのTimelineが流れているよ' }
+    ]
+  },
 
 }
 </script>
