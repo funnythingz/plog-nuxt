@@ -28,6 +28,17 @@ import isEmpty from 'lodash/isEmpty'
 
 export default {
 
+  head() {
+    return {
+      title: `Plog - ${this.comment.content}`,
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: `${this.comment.content}` }
+      ]
+    }
+  },
+
   updated() {
     if(this.isLogin()) {
       this.actionEnabled()
@@ -66,7 +77,7 @@ export default {
           good: (comment.good += 1)
         })
         this.goodActionActive = false
-        this.$router.push({path: `/comments/${this.$route.params.id}`})
+        this.$router.go({path: `/comments/${this.$route.params.id}`, force: true})
       }
     },
 
@@ -80,7 +91,7 @@ export default {
           bad: (comment.bad += 1)
         })
         this.badActionActive = false
-        this.$router.push({path: `/comments/${this.$route.params.id}`})
+        this.$router.go({path: `/comments/${this.$route.params.id}`, force: true})
       }
     },
 

@@ -17,7 +17,7 @@ export default {
   },
 
   head: {
-    title: 'plog - Timeline',
+    title: 'Plog - Timeline',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
