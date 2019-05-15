@@ -1,25 +1,24 @@
 <template lang="pug">
-v-flex.pr-3.mt-4.mb-3
-  v-container.grid-list-lg
-    v-layout.row.wrap
-      v-flex(v-for="comment of comments" :key="comment.id")
-        v-card(:color="comment.color" @click="linkToComment(comment.id)")
-          v-card-text
-            | {{comment.content}}
-          v-divider
-          v-card-actions.justify-end
-            v-btn(flat :dark="isLogin()" small @click.stop="goodAction(comment.id)" :disabled="goodActionActive")
-              v-icon.mr-1
-                | mdi-heart-circle-outline
-              | Good!
-              span.small.ml-2
-                | {{comment.good}}
-            v-btn(flat :dark="isLogin()" small @click.stop="badAction(comment.id)" :disabled="badActionActive")
-              v-icon.mr-1
-                | mdi-heart-broken
-              | Bad!
-              span.ml-2
-                | {{comment.bad}}
+v-container
+  v-layout.mt-5.justify-center.align-center
+    v-flex.lg4
+      v-card(:color="comment.color")
+        v-card-text
+          | {{comment.content}}
+        v-divider
+        v-card-actions.justify-end
+          v-btn(flat :dark="isLogin()" small @click.stop="goodAction(commentId)" :disabled="goodActionActive")
+            v-icon.mr-1
+              | mdi-heart-circle-outline
+            | Good!
+            span.small.ml-2
+              | {{comment.good}}
+          v-btn(flat :dark="isLogin()" small @click.stop="badAction(commentId)" :disabled="badActionActive")
+            v-icon.mr-1
+              | mdi-heart-broken
+            | Bad!
+            span.ml-2
+              | {{comment.bad}}
 </template>
 
 <script>
@@ -29,8 +28,15 @@ import isEmpty from 'lodash/isEmpty'
 
 export default {
 
-  created() {
-    this.$store.dispatch('setCommentsRef', db.collection('comments'))
+  head() {
+    return {
+      title: `Plog - ${this.comment.content}`,
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: `${this.comment.content}` }
+      ]
+    }
   },
 
   updated() {
@@ -42,7 +48,6 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ comments: 'getComments' }),
     ...mapState(['currentUser'])
   },
 
@@ -50,6 +55,14 @@ export default {
     return {
       goodActionActive: false,
       badActionActive: false
+    }
+  },
+
+  async asyncData ({ params }) {
+    const doc = await db.collection('comments').doc(params.id).get()
+    return {
+      comment: doc.data(),
+      commentId: doc.id
     }
   },
 
@@ -64,7 +77,7 @@ export default {
           good: (comment.good += 1)
         })
         this.goodActionActive = false
-        this.$router.push({path: '/'})
+        this.$router.go({path: `/comments/${this.$route.params.id}`, force: true})
       }
     },
 
@@ -78,7 +91,7 @@ export default {
           bad: (comment.bad += 1)
         })
         this.badActionActive = false
-        this.$router.push({path: '/'})
+        this.$router.go({path: `/comments/${this.$route.params.id}`, force: true})
       }
     },
 
@@ -94,10 +107,6 @@ export default {
     actionDisabled() {
       this.goodActionActive = true
       this.badActionActive = true
-    },
-
-    linkToComment(commentId) {
-      this.$router.push({path: `/comments/${commentId}`})
     }
   }
 
@@ -105,6 +114,4 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.v-card
-  cursor: pointer
 </style>
