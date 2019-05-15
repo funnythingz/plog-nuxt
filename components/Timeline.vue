@@ -3,18 +3,18 @@ v-flex.pr-3.mt-4.mb-3
   v-container.grid-list-lg
     v-layout.row.wrap
       v-flex(v-for="comment of comments" :key="comment.id")
-        v-card(:color="comment.color")
+        v-card(:color="comment.color" @click="linkToComment(comment.id)")
           v-card-text
             | {{comment.content}}
           v-divider
           v-card-actions.justify-end
-            v-btn(flat :dark="isLogin()" small @click="goodAction(comment.id)" :disabled="goodActionActive")
+            v-btn(flat :dark="isLogin()" small @click.stop="goodAction(comment.id)" :disabled="goodActionActive")
               v-icon.mr-1
                 | mdi-heart-circle-outline
               | Good!
               span.small.ml-2
                 | {{comment.good}}
-            v-btn(flat :dark="isLogin()" small @click="badAction(comment.id)" :disabled="badActionActive")
+            v-btn(flat :dark="isLogin()" small @click.stop="badAction(comment.id)" :disabled="badActionActive")
               v-icon.mr-1
                 | mdi-heart-broken
               | Bad!
@@ -94,6 +94,10 @@ export default {
     actionDisabled() {
       this.goodActionActive = true
       this.badActionActive = true
+    },
+
+    linkToComment(commentId) {
+      this.$router.push({path: `/comments/${commentId}`})
     }
   }
 
@@ -101,4 +105,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.v-card
+  cursor: pointer
 </style>

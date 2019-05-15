@@ -7,13 +7,13 @@ v-container
           | {{comment.content}}
         v-divider
         v-card-actions.justify-end
-          v-btn(flat :dark="isLogin()" small @click="goodAction(commentId)" :disabled="goodActionActive")
+          v-btn(flat :dark="isLogin()" small @click.stop="goodAction(commentId)" :disabled="goodActionActive")
             v-icon.mr-1
               | mdi-heart-circle-outline
             | Good!
             span.small.ml-2
               | {{comment.good}}
-          v-btn(flat :dark="isLogin()" small @click="badAction(commentId)" :disabled="badActionActive")
+          v-btn(flat :dark="isLogin()" small @click.stop="badAction(commentId)" :disabled="badActionActive")
             v-icon.mr-1
               | mdi-heart-broken
             | Bad!
