@@ -27,7 +27,7 @@
     "lodash": "^4.17.11",
     "material-colors-selector": "^1.0.3",
     "node-sass": "^4.11.0",
-    "nuxt": "^2.7.0",
+    "nuxt": "^2.7.1",
     "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
