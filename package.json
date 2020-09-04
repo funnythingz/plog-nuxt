@@ -26,7 +26,7 @@
     "firebase-functions": "^2.2.1",
     "lodash": "^4.17.11",
     "material-colors-selector": "^1.0.3",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.7.1",
     "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
